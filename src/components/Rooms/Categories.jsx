@@ -1,13 +1,13 @@
 import Container from "../Shared/Container";
-import CategoryCard from "./CategoryCard";
+import CategoryBox from "./CategoryBox";
 import { categories } from "./categoriesData";
 
 const Categories = () => {
   return (
     <Container>
-      <div className="flex items-center gap-x-8 mt-4 mb-6 overflow-x-auto">
+      <div className="flex items-center gap-x-8 mt-2 mb-8 overflow-x-auto">
         {categories.map((category) => (
-          <CategoryCard
+          <CategoryBox
             key={category.label}
             label={category.label}
             icon={category.icon}
