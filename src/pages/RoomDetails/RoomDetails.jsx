@@ -1,9 +1,9 @@
 import { useParams } from "react-router-dom";
 import Container from "../../components/Shared/Container";
-import Heading from "../../components/Shared/Heading/Heading";
 import RoomHeader from "../../components/Rooms/RoomHeader";
 import RoomInfo from "../../components/Rooms/RoomInfo";
 import RoomReservation from "../../components/Rooms/RoomReservations";
+import { Helmet } from "react-helmet";
 
 const RoomDetails = () => {
   const { id } = useParams();
@@ -32,6 +32,9 @@ const RoomDetails = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>{room.title}</title>
+      </Helmet>
       <Container>
         {/* Room Header */}
         <RoomHeader roomData={room} />
