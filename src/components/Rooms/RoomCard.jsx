@@ -1,8 +1,10 @@
+import { Link } from "react-router-dom";
+
 const RoomCard = ({ room }) => {
-  const { title, image, price } = room;
+  const { _id, title, image, price } = room;
 
   return (
-    <div className="col-span-1 cursor-pointer group">
+    <Link to={`/rooms/${_id}`} className="col-span-1 cursor-pointer group">
       <div className="flex flex-col gap-2 w-full">
         <div
           className="
@@ -43,7 +45,7 @@ const RoomCard = ({ room }) => {
           <div className="font-light">night</div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
