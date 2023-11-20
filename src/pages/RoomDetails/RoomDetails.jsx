@@ -1,9 +1,9 @@
 import { useParams } from "react-router-dom";
-import Container from "../../components/Shared/Container";
-import RoomHeader from "../../components/Rooms/RoomHeader";
-import RoomInfo from "../../components/Rooms/RoomInfo";
-import RoomReservation from "../../components/Rooms/RoomReservations";
 import { Helmet } from "react-helmet";
+
+import RoomHeader from "../../components/RoomDetails/RoomHeader";
+import RoomInfo from "../../components/RoomDetails/RoomInfo";
+import RoomReservation from "../../components/RoomDetails/RoomReservations";
 
 const RoomDetails = () => {
   const { id } = useParams();
@@ -35,22 +35,19 @@ const RoomDetails = () => {
       <Helmet>
         <title>{room.title}</title>
       </Helmet>
-      <Container>
+      <div className="max-w-5xl mx-auto px-4 lg:px-0 ">
         {/* Room Header */}
         <RoomHeader roomData={room} />
 
-        <div className="flex gap-x-16 mt-10">
+        <div className="mt-10 grid grid-cols-1 lg:grid-cols-7 gap-10">
           {/* Room Info */}
-          <div className="flex-1">
-            <RoomInfo roomData={room} />
-          </div>
+          <RoomInfo roomData={room} />
 
           {/* Room Reservation */}
-          <div className="flex-1">
-            <RoomReservation roomData={room} />
-          </div>
+
+          <RoomReservation roomData={room} />
         </div>
-      </Container>
+      </div>
     </div>
   );
 };
