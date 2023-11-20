@@ -5,6 +5,8 @@ import AuthProvider from "./providers/AuthProvider";
 import { HelmetProvider } from "react-helmet-async";
 import { router } from "./routes/Routes";
 import { Toaster } from "react-hot-toast";
+
+// for react date range
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 
