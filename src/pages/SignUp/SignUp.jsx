@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { toast } from "react-hot-toast";
 import { LiaSpinnerSolid } from "react-icons/lia";
@@ -10,6 +10,10 @@ import { generateToken, saveUser } from "../../api/apiAuth";
 const SignUp = () => {
   const { createUser, updateUserProfile, signInWithGoogle, loading } =
     useAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const from = location.state?.form?.pathname || "/";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -37,6 +41,7 @@ const SignUp = () => {
       await saveUser(user);
 
       toast.success("Account created successfully!");
+      navigate(from);
     } catch (error) {
       toast.error(error?.message || "Something went wrong!");
     }
@@ -54,6 +59,7 @@ const SignUp = () => {
       await saveUser(user);
 
       toast.success("Account created successfully!");
+      navigate(from);
     } catch (error) {
       toast.error(error?.message || "Something went wrong!");
     }

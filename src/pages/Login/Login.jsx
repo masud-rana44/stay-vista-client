@@ -1,5 +1,5 @@
 import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { LiaSpinnerSolid } from "react-icons/lia";
 
@@ -8,6 +8,10 @@ import useAuth from "../../hooks/useAuth";
 
 const Login = () => {
   const { signIn, signInWithGoogle, loading } = useAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const from = location.state?.form?.pathname || "/";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,6 +28,7 @@ const Login = () => {
       await generateToken(user?.email);
 
       toast.success("Login successful!");
+      navigate(from);
     } catch (error) {
       toast.error(error?.message || "Something went wrong!");
     }
@@ -41,6 +46,7 @@ const Login = () => {
       await saveUser(user);
 
       toast.success("Login successful!");
+      navigate(from);
     } catch (error) {
       toast.error(error?.message || "Something went wrong!");
     }
