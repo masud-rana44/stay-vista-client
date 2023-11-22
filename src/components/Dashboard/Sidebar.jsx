@@ -7,9 +7,9 @@ import { AiOutlineBars } from "react-icons/ai";
 import { BsGraphUp } from "react-icons/bs";
 import MenuItem from "./MenuItem";
 
-// import HostMenu from "./HostMenu";
-// import GuestMenu from "./GuestMenu";
-// import AdminMenu from "./AdminMenu";
+import HostMenu from "./HostMenu";
+import GuestMenu from "./GuestMenu";
+import AdminMenu from "./AdminMenu";
 import useAuth from "../../hooks/useAuth";
 import Logo from "../Shared/Logo";
 import ToggleBtn from "../Button/ToogleBtn";
@@ -18,7 +18,7 @@ const Sidebar = () => {
   const { logOut } = useAuth();
   const [toggle, setToggle] = useState(false);
   const [isActive, setActive] = useState(false);
-  const [role] = "host";
+  const [role] = ["host"];
 
   //   For guest/host menu item toggle button
   const toggleHandler = (event) => {
@@ -71,9 +71,9 @@ const Sidebar = () => {
               />
 
               {/* Host Menu Items */}
-              {/* {role === "guest" && <GuestMenu />}
+              {role === "guest" && <GuestMenu />}
               {role === "host" ? toggle ? <HostMenu /> : <GuestMenu /> : ""}
-              {role === "admin" && <AdminMenu />} */}
+              {role === "admin" && <AdminMenu />}
             </nav>
           </div>
         </div>
