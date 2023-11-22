@@ -7,6 +7,10 @@ import SignUp from "../pages/SignUp/SignUp";
 import RoomDetails from "../pages/RoomDetails/RoomDetails";
 import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
+import DashboardLayout from "../layouts/DashboardLayout";
+import AddRoom from "../pages/Dashboard/Host/AddRoom";
+import MyListings from "../pages/Dashboard/Host/MyListings";
+import ManageUses from "../pages/Dashboard/Admin/ManageUses";
 
 export const router = createBrowserRouter([
   {
@@ -43,5 +47,25 @@ export const router = createBrowserRouter([
         <SignUp />
       </PublicRoute>
     ),
+  },
+  {
+    path: "/dashboard",
+    element: <DashboardLayout />,
+    children: [
+      {
+        path: "my-listings",
+        element: <MyListings />,
+      },
+      {
+        path: "add-room",
+        element: <AddRoom />,
+      },
+
+      // admin routes
+      {
+        path: "manage-users",
+        element: <ManageUses />,
+      },
+    ],
   },
 ]);
