@@ -11,7 +11,7 @@ const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const from = location.state?.form?.pathname || "/";
+  const from = location.state?.from?.pathname || "/";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,7 +28,7 @@ const Login = () => {
       await generateToken(user?.email);
 
       toast.success("Login successful!");
-      navigate(from);
+      navigate(from, { replace: true });
     } catch (error) {
       toast.error(error?.message || "Something went wrong!");
     }
@@ -46,7 +46,7 @@ const Login = () => {
       await saveUser(user);
 
       toast.success("Login successful!");
-      navigate(from);
+      navigate(from, { replace: true });
     } catch (error) {
       toast.error(error?.message || "Something went wrong!");
     }
