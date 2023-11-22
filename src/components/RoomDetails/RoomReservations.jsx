@@ -1,9 +1,10 @@
 import { useState } from "react";
 import Button from "../Button/Button";
 import Calender from "./Calender";
+import { differenceInDays } from "date-fns";
 
 const RoomReservations = ({ roomData }) => {
-  const totalPrice = roomData?.price * 2;
+  const [totalPrice, setTotalPrice] = useState(roomData?.price || 0);
   const [value, setValue] = useState({
     startDate: new Date(roomData?.from),
     endDate: new Date(roomData?.to),
@@ -11,8 +12,11 @@ const RoomReservations = ({ roomData }) => {
   });
 
   const handleSelect = (ranges) => {
-    console.log(ranges.selection);
+    const totalDays =
+      differenceInDays(ranges.selection.endDate, ranges.selection.startDate) +
+      1;
     setValue({ ...ranges.selection });
+    setTotalPrice(totalDays * roomData?.price);
   };
 
   return (

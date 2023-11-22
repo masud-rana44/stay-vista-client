@@ -9,7 +9,7 @@ const Calender = ({ value, handleSelect }) => {
       date={value.startDate}
       showDateDisplay={false}
       onChange={handleSelect}
-      minDate={value.startDate}
+      minDate={new Date()}
       // maxDate={value.endDate}
     />
   );
