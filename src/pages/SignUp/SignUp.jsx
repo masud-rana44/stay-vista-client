@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import { toast } from "react-hot-toast";
+import { LiaSpinnerSolid } from "react-icons/lia";
+
 import { imageUpload } from "../../api/utils";
 import useAuth from "../../hooks/useAuth";
 import { generateToken, saveUser } from "../../api/apiAuth";
-import { toast } from "react-hot-toast";
 
 const SignUp = () => {
   const { createUser, updateUserProfile, signInWithGoogle, loading } =
@@ -36,7 +38,6 @@ const SignUp = () => {
 
       toast.success("Account created successfully!");
     } catch (error) {
-      console.log(error);
       toast.error(error?.message || "Something went wrong!");
     }
   };
@@ -134,7 +135,11 @@ const SignUp = () => {
               type="submit"
               className="bg-rose-500 w-full rounded-md py-3 text-white"
             >
-              Continue
+              {loading ? (
+                <LiaSpinnerSolid className="animate-spin mx-auto" />
+              ) : (
+                "Continue"
+              )}
             </button>
           </div>
         </form>
